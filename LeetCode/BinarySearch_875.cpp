@@ -9,7 +9,7 @@ public:
             int mid = (l+u)/2;
             for(int i = 0 ; i< piles.size() ; i++)
             {
-                req += ((piles[i] - 1)/mid + 1);
+                req += ((piles[i] - 1)/mid + 1);        //ceil funtion
                 //req += ceil(piles[i]/mid);
             }
             
