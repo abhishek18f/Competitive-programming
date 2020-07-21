@@ -19,56 +19,8 @@ const int maxm=1e7+5;
 const int mod=1e9+7;
 const int inf=0x3f3f3f3f;
 
+void getZarr(string str  , int Z[]);
 
-void rk(char* txt , char* pat , int q)
-{
-    int m = strlen(pat);
-    int n = strlen(txt);
-    
-    int d = 256;
-    int p = 0; // hash value for pattern;
-    int t = 0; //hash value for text;
-    int h = 1;  //h = d^(m-1)
-
-    
-
-    for(int i  = 0 ; i <m-1 ; i++)
-        h = (d*h) % q;
-
-    //calculate hash value of pattern and first window
-    for(int j = 0; j<m ; j++)
-    {
-        p = (d*p + pat[j]) % q;
-        t = (d*t + txt[j]) % q;
-    }
-
-    //slide the window
-    for(int i = 0 ; i<= n-m ; i++)
-    {
-        if(p==t)
-        {
-            int j;
-            for( j = 0 ; j < m ; j++)
-            {
-                if(pat[j] != txt[i+j]) break;
-            }
-
-            if(j == m) 
-                //pattern found at i :)
-                cout << "pattern found at  = " << i << "\n";
-        }
-        
-        if(i < n-m)
-            {
-                //rehaashing
-                t = (d*(t - txt[i]*h) + txt[i+m]) % q;
-
-                if(t<0) t = t + q;
-            }
-        
-    }
-
-}
 
 int main()
 {
@@ -90,7 +42,7 @@ int main()
     char txt[] = "ABABDABACDABABCABAB"; 
     char pat[] = "ABABCABAB"; 
 
-    // char txt[] = "GEEKS FOR GEEKS";  
-    // char pat[] = "GEEK";  
-    rk(txt , pat , 101 ); 
+    //  char txt[] = "GEEKS FOR GEEKS";  
+    //  char pat[] = "GEEK";  
+    Zsearch(txt , pat ); 
 }
