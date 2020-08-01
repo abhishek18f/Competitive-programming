@@ -19,7 +19,6 @@ const int maxm=1e7+5;
 const int mod=1e9+7;
 const int inf=0x3f3f3f3f;
 
-void getZarr(string str  , int Z[]);
 
 
 int main()
@@ -39,10 +38,26 @@ int main()
     //     solve();
     // }
 
-    char txt[] = "ABABDABACDABABCABAB"; 
-    char pat[] = "ABABCABAB"; 
+    // char txt[] = "ABABDABACDABABCABAB"; 
+    // char pat[] = "ABABCABAB"; 
 
-    //  char txt[] = "GEEKS FOR GEEKS";  
-    //  char pat[] = "GEEK";  
-    Zsearch(txt , pat ); 
+    // //  char txt[] = "GEEKS FOR GEEKS";  
+    // //  char pat[] = "GEEK";  
+    // vector<bool> v = SieveOfEratosthenes(19);
+    // fo(i , 0 , v.size()) if(v[i]) cout << i << " ";
+
+    int freq[] = {2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9}; 
+    int n = sizeof(freq)/sizeof(freq[0]); 
+    int *BITree = constructBIT(freq, n); 
+    cout << "Sum of elements in arr[0..5] is "
+        << getSum(BITree, 5); 
+  
+    // Let use test the update operation 
+    freq[3] += 6; 
+    updateBIT(BITree, n, 6, 3); //Update BIT for above change in arr[] 
+  
+    cout << "\nSum of elements in arr[0..5] after update is "
+        << getSum(BITree, 5); 
+  
+    
 }
