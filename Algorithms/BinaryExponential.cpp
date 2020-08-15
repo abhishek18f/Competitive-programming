@@ -25,11 +25,11 @@ long long binpow(long long a , long long n)
     long long res = 1;
     while(n >0)
     {
-        if(b & 1 )
+        if(n & 1 )
             res = res * a;
         
         a = a*a;
-        b >>= 1; //b /=2
+        n >>= 1; //b /=2
     }
     return res;
 }
@@ -44,11 +44,11 @@ long long binpow(long long a , long long n ,long long m)
     long long res = 1;
     while(n >0)
     {
-        if(b & 1 )
-            res = res * a;
+        if(n & 1 )
+            res = res * a % m;
         
         a = a*a % m;
-        b >>= 1; //b /=2
+        n >>= 1; //b /=2
     }
     return res;
 }

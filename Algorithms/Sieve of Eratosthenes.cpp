@@ -17,3 +17,20 @@ vector<bool> SieveOfEratosthenes(int n)
     }   
     return prime;
 }
+
+vector<int> Solution::sieve(int A) {
+    int n = A;
+    vector<bool> sieve(n+1 , true);
+    sieve[0] = sieve[1] = false;
+    for(int i = 2 ; i<= sqrt(A) ; ++i)
+        if(sieve[i])
+            for(int j = i*i ; j<n+1 ; j+=i)
+                sieve[j] = false;
+                
+    vector<int> primes;
+    for(int i =0 ; i <n+1 ; ++i)
+        if(sieve[i])
+            primes.push_back(i);
+            
+    return primes;
+}
